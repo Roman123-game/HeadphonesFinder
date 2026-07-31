@@ -29,9 +29,9 @@ export default function App() {
   const [angle, setAngle] = useState(0);
   const [connected, setConnected] = useState(false);
 
-  useEffect(() => {
-    startBluetooth();
-  }, []);
+  // useEffect(() => {
+  //   startBluetooth();
+  // }, []);
 
   useEffect(() => {
     if (!connected) return;
