@@ -189,13 +189,6 @@ export default function App() {
 />
 <Radar size={380}>
 
-    <Image
-        source={require("../../assets/car_top.png")}
-        style={{
-            width:180,
-            height:180
-        }}
-    />
 
     <HeadphoneDot
         x={dotX}
