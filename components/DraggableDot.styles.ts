@@ -3,16 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   dot: {
     position: "absolute",
-
-    width: 40,
-    height: 40,
-
-    borderRadius: 20,
-
+    width: 28,
+    height: 28,
+    borderRadius: 14,
     backgroundColor: "red",
-
-    left: 150,
-    top: 150,
+    marginLeft: -14,
+    marginTop: -14,
+    zIndex: 100,
   },
 });
 

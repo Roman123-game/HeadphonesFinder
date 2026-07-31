@@ -1,26 +1,37 @@
-// src/components/CarTopView.tsx
+import React, { useMemo, useState } from "react";
+import { View } from "react-native";
 
-import React from "react";
-import {View} from "react-native";
 import styles from "./CarTopView.styles";
+import DistanceMeasure from "./DistanceMeasure";
+import DraggableDot from "./DraggableDot";
+
+export interface Point {
+  x: number;
+  y: number;
+}
 
 interface Props {
-  children?: React.ReactNode;
   size?: number;
 }
 
-
 export default function CarTopView({
-  children,
-  size = 220,
-}: Props) {
-
-
+  size = 220,}: Props) {
   const radarSize = size * 1.7;
+  const center = radarSize / 2;
+  const carPosition = useMemo(
+    () => ({
+      x: center,
+      y: center,
+    }),
+    [center]
+  );
 
+  const [dotPosition, setDotPosition] = useState<Point>({
+    x: center,
+    y: center,
+  });
 
   return (
-
     <View
       style={[
         styles.container,
@@ -30,8 +41,6 @@ export default function CarTopView({
         },
       ]}
     >
-
-
       {/* Radar */}
 
       <View
@@ -45,7 +54,6 @@ export default function CarTopView({
         ]}
       />
 
-
       <View
         style={[
           styles.ring,
@@ -56,7 +64,6 @@ export default function CarTopView({
           },
         ]}
       />
-
 
       <View
         style={[
@@ -69,76 +76,59 @@ export default function CarTopView({
         ]}
       />
 
-
-
-      {/* Car body */}
+      {/* Car */}
 
       <View
         style={[
           styles.car,
           {
-            width:size * 0.55,
-            height:size,
-            borderRadius:size * 0.12,
+            width: size * 0.55,
+            height: size,
+            borderRadius: size * 0.12,
           },
         ]}
       >
-
-
-        {/* Front windshield */}
-
         <View
           style={[
             styles.windshield,
             {
-              width:size * 0.32,
-              height:size * 0.22,
-              top:size * 0.18,
+              width: size * 0.32,
+              height: size * 0.22,
+              top: size * 0.18,
             },
           ]}
         />
-
-
-        {/* Rear window */}
 
         <View
           style={[
             styles.windowBack,
             {
-              width:size * 0.32,
-              height:size * 0.22,
-              bottom:size * 0.18,
+              width: size * 0.32,
+              height: size * 0.22,
+              bottom: size * 0.18,
             },
           ]}
         />
 
-
-
-        {/* Wheels */}
-
         <View style={[styles.wheel, styles.frontLeft]} />
         <View style={[styles.wheel, styles.frontRight]} />
-
         <View style={[styles.wheel, styles.backLeft]} />
         <View style={[styles.wheel, styles.backRight]} />
 
-
-        {/* Lights */}
-
-        <View style={styles.lightFrontLeft}/>
-        <View style={styles.lightFrontRight}/>
-
+        <View style={styles.lightFrontLeft} />
+        <View style={styles.lightFrontRight} />
       </View>
 
+      <DraggableDot
+        initialPosition={carPosition}
+        onMove={setDotPosition}
+      />
 
-      {/* Headphone dot */}
-
-      {children}
-
-
+      <DistanceMeasure
+        carPosition={carPosition}
+        dotPosition={dotPosition}
+        maxDistance={radarSize / 2}
+      />
     </View>
   );
 }
-
-
-

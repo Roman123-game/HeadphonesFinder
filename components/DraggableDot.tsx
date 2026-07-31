@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Animated,
   PanResponder,
@@ -6,52 +6,63 @@ import {
 
 import styles from "./DraggableDot.styles";
 
-export default function DraggableDot() {
-  const position = useRef(
+export interface Point {
+  x: number;
+  y: number;
+}
+
+interface Props {
+  initialPosition: Point;
+  onMove: (position: Point) => void;
+}
+
+export default function DraggableDot({
+  initialPosition,
+  onMove,
+}: Props) {
+  // Stores the current absolute position
+  const currentPosition = useRef<Point>({
+    x: initialPosition.x,
+    y: initialPosition.y,
+  });
+
+  // Animated values
+  const animatedPosition = useRef(
     new Animated.ValueXY({
-      x: 0,
-      y: 0,
+      x: initialPosition.x,
+      y: initialPosition.y,
     })
   ).current;
 
+  useEffect(() => {
+    onMove(currentPosition.current);
+  }, [onMove]);
 
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
 
-      onPanResponderGrant: () => {
-        position.setOffset({
-          x: (position.x as any)._value,
-          y: (position.y as any)._value,
-        });
+      onPanResponderMove: (_, gesture) => {
+        const x = currentPosition.current.x + gesture.dx;
+        const y = currentPosition.current.y + gesture.dy;
 
-        position.setValue({
-          x: 0,
-          y: 0,
-        });
+        animatedPosition.setValue({ x, y });
+
+        onMove({ x, y });
       },
 
+      onPanResponderRelease: (_, gesture) => {
+        currentPosition.current = {
+          x: currentPosition.current.x + gesture.dx,
+          y: currentPosition.current.y + gesture.dy,
+        };
 
-      onPanResponderMove: Animated.event(
-        [
-          null,
-          {
-            dx: position.x,
-            dy: position.y,
-          },
-        ],
-        {
-          useNativeDriver: false,
-        }
-      ),
+        animatedPosition.setValue(currentPosition.current);
 
-
-      onPanResponderRelease: () => {
-        position.flattenOffset();
+        onMove(currentPosition.current);
       },
     })
   ).current;
-
 
   return (
     <Animated.View
@@ -59,7 +70,8 @@ export default function DraggableDot() {
       style={[
         styles.dot,
         {
-          transform: position.getTranslateTransform(),
+          left: animatedPosition.x,
+          top: animatedPosition.y,
         },
       ]}
     />
