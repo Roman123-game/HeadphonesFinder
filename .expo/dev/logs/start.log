@@ -3419,3 +3419,17 @@
 {"_e":"metro:bundling:progress","_t":1785515297501,"id":"2","progress":0,"total":1,"current":0}
 {"_e":"metro:bundling:progress","_t":1785515297743,"id":"2","progress":0,"total":1,"current":0}
 {"_e":"metro:bundling:done","_t":1785515297920,"id":"2","total":1,"ms":444.3959}
+{"_e":"metro:bundling:started","_t":1785515366031,"id":"3","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785515366035,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785515366273,"id":"3","total":1,"ms":238.7385}
+{"_e":"metro:client_log","_t":1785515504121,"level":"error","data":["React has detected a change in the order of Hooks called by CarTopView. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks\n\n   Previous render            Next render\n   ------------------------------------------------------\n1. useMemo                    useState\n   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"]}
+{"_e":"metro:client_log","_t":1785515505666,"level":"error","data":["[Error: Should have a queue. You are likely calling Hooks conditionally, which is not allowed. (https://react.dev/link/invalid-hook-call)]"]}
+{"_e":"metro:bundling:started","_t":1785515516736,"id":"6","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785515516738,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785515517019,"id":"6","total":1,"ms":282.2531}
+{"_e":"metro:bundling:started","_t":1785515810998,"id":"7","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785515811001,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785515811331,"id":"7","total":1,"ms":330.4756}
+{"_e":"metro:bundling:started","_t":1785515942724,"id":"8","platform":"android","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785515942726,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785515942855,"id":"8","total":1,"ms":128.8792}

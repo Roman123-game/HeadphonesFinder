@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 
 import styles from "./CarTopView.styles";
-import DistanceMeasure from "./DistanceMeasure";
 import DraggableDot from "./DraggableDot";
+import DistanceMeasure from "./DistanceMeasure";
 
 export interface Point {
   x: number;
@@ -12,24 +12,29 @@ export interface Point {
 
 interface Props {
   size?: number;
+  carScale?: number;
 }
 
-export default function CarTopView({
-  size = 220,}: Props) {
-  const radarSize = size * 1.7;
-  const center = radarSize / 2;
-  const carPosition = useMemo(
-    () => ({
-      x: center,
-      y: center,
-    }),
-    [center]
-  );
 
-  const [dotPosition, setDotPosition] = useState<Point>({
+export default function CarTopView({
+  size = 220,
+  carScale = 0.65,
+}: Props) {
+
+  const radarSize = size * 1.7;
+
+  const center = radarSize / 2;
+
+  const carPosition: Point = {
     x: center,
     y: center,
-  });
+  };
+
+
+  const [dotPosition, setDotPosition] = useState<Point>(
+    carPosition
+  );
+
 
   return (
     <View
@@ -41,8 +46,8 @@ export default function CarTopView({
         },
       ]}
     >
-      {/* Radar */}
 
+      {/* Radar Outer Ring */}
       <View
         style={[
           styles.ring,
@@ -54,6 +59,8 @@ export default function CarTopView({
         ]}
       />
 
+
+      {/* Radar Middle Ring */}
       <View
         style={[
           styles.ring,
@@ -65,6 +72,8 @@ export default function CarTopView({
         ]}
       />
 
+
+      {/* Radar Inner Ring */}
       <View
         style={[
           styles.ring,
@@ -76,59 +85,76 @@ export default function CarTopView({
         ]}
       />
 
-      {/* Car */}
 
+      {/* Car Body */}
       <View
         style={[
           styles.car,
           {
-            width: size * 0.55,
-            height: size,
-            borderRadius: size * 0.12,
+            width: size * 0.55 * carScale,
+            height: size * carScale,
+            borderRadius: size * 0.12 * carScale,
           },
         ]}
       >
+
+        {/* Front Windshield */}
         <View
           style={[
             styles.windshield,
             {
-              width: size * 0.32,
-              height: size * 0.22,
-              top: size * 0.18,
+              width: size * 0.32 * carScale,
+              height: size * 0.22 * carScale,
+              top: size * 0.18 * carScale,
             },
           ]}
         />
 
+
+        {/* Rear Window */}
         <View
           style={[
             styles.windowBack,
             {
-              width: size * 0.32,
-              height: size * 0.22,
-              bottom: size * 0.18,
+              width: size * 0.32 * carScale,
+              height: size * 0.22 * carScale,
+              bottom: size * 0.18 * carScale,
             },
           ]}
         />
 
+
+        {/* Wheels */}
         <View style={[styles.wheel, styles.frontLeft]} />
         <View style={[styles.wheel, styles.frontRight]} />
+
         <View style={[styles.wheel, styles.backLeft]} />
         <View style={[styles.wheel, styles.backRight]} />
 
+
+        {/* Lights */}
         <View style={styles.lightFrontLeft} />
         <View style={styles.lightFrontRight} />
+
+
       </View>
 
+
+      {/* Draggable Target */}
       <DraggableDot
         initialPosition={carPosition}
         onMove={setDotPosition}
       />
 
+
+      {/* Distance */}
       <DistanceMeasure
         carPosition={carPosition}
         dotPosition={dotPosition}
         maxDistance={radarSize / 2}
       />
+
+
     </View>
   );
 }

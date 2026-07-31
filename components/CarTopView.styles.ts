@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
   wheel:{
     position:"absolute",
-    width:18,
+    width:10,
     height:35,
     backgroundColor:"#111",
     borderRadius:8,
@@ -54,30 +54,30 @@ const styles = StyleSheet.create({
 
   frontLeft:{
     left:-8,
-    top:35,
+    top:15,
   },
 
   frontRight:{
     right:-8,
-    top:35,
+    top:15,
   },
 
 
   backLeft:{
     left:-8,
-    bottom:35,
+    bottom:15,
   },
 
   backRight:{
     right:-8,
-    bottom:35,
+    bottom:15,
   },
 
 
   lightFrontLeft:{
     position:"absolute",
     top:5,
-    left:20,
+    left:10,
     width:15,
     height:8,
     backgroundColor:"#fff",
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   lightFrontRight:{
     position:"absolute",
     top:5,
-    right:20,
+    right:10,
     width:15,
     height:8,
     backgroundColor:"#fff",
