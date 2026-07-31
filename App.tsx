@@ -94,69 +94,6 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>🎧 Headphone Finder</Text>
-
-      <View style={styles.radar}>
-        <View style={styles.ring1} />
-        <View style={styles.ring2} />
-        <View style={styles.ring3} />
-
-        <View
-          style={[
-            styles.dot,
-            {
-              transform: [
-                { translateX: dotX },
-                { translateY: dotY },
-              ],
-            },
-          ]}
-        />
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>Device</Text>
-
-        <Text style={styles.value}>
-          {device?.name ?? "Not Connected"}
-        </Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>RSSI</Text>
-
-        <Text style={styles.value}>{rssi} dBm</Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>Estimated Distance</Text>
-
-        <Text style={styles.distance}>
-          {distance.toFixed(2)} m
-        </Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>Status</Text>
-
-        <Text style={styles.status}>
-          {status}
-        </Text>
-      </View>
-
-      <View style={styles.signalContainer}>
-        <View
-          style={[
-            styles.signal,
-            {
-              width: `${Math.max(
-                5,
-                Math.min(100, (100 + rssi) * 2)
-              )}%`,
-            },
-          ]}
-        />
-      </View>
 
       {!connected && (
         <TouchableOpacity
