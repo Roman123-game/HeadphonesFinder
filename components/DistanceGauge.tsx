@@ -16,16 +16,12 @@ import Animated, {
 
 interface Props {
   distance: number;
-  rssi?: number;
 }
 
 
-export default function DistanceGauge({
-  distance,
-  rssi = -100,
-}: Props) {
+export default function DistanceGauge({distance}: Props) {
 
-
+  const rssi = -100;
   const progress = useSharedValue(0);
 
 
