@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "expo": "npx expo star --clear"
+    "expo": "npx expo start --clear"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.86.2",
