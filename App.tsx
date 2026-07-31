@@ -102,11 +102,6 @@ export default function App() {
         <View style={styles.ring2} />
         <View style={styles.ring3} />
 
-        <Image
-          source={require("./assets/car_top.png")}
-          style={styles.car}
-        />
-
         <View
           style={[
             styles.dot,
