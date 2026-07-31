@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   dot: {
     position: "absolute",
-    width: 22,
-    height: 22,
+    width: 28,
+    height: 28,
     borderRadius: 14,
     backgroundColor: "red",
     marginLeft: -14,

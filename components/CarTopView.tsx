@@ -4,6 +4,7 @@ import { View } from "react-native";
 import styles from "./CarTopView.styles";
 import DraggableDot from "./DraggableDot";
 import DistanceMeasure from "./DistanceMeasure";
+import DistanceAlert from "./DistanceAlert"
 
 export interface Point {
   x: number;
@@ -21,6 +22,8 @@ export default function CarTopView({
   carScale = 0.65,
 }: Props) {
 
+  
+
   const radarSize = size * 1.7;
 
   const center = radarSize / 2;
@@ -34,7 +37,20 @@ export default function CarTopView({
   const [dotPosition, setDotPosition] = useState<Point>(
     carPosition
   );
+  
+  const dx = dotPosition.x - carPosition.x;
+const dy = dotPosition.y - carPosition.y;
 
+const distance = Math.sqrt(
+  dx * dx + dy * dy
+);
+
+const distancePercent = Math.min(
+  Math.round(
+    (distance / (radarSize / 2)) * 100
+  ),
+  100
+);
 
   return (
     <View
@@ -153,6 +169,9 @@ export default function CarTopView({
         dotPosition={dotPosition}
         maxDistance={radarSize / 2}
       />
+      <DistanceAlert
+  distancePercent={distancePercent}
+/>
 
 
     </View>
