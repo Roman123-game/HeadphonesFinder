@@ -1,4 +1,7 @@
 {
   "name": "main",
-  "displayName": "main"
+  "displayName": "main",
+  "android": {
+    "package": "com.anonymous.main"
+  }
 }
