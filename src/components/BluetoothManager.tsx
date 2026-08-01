@@ -23,6 +23,7 @@ export default function BluetoothManager() {
       const paired = await RNBluetoothClassic.getBondedDevices();
       setDevices(paired);
     } catch (e) {
+        console.log(e);
       setError('Failed loading Bluetooth devices');
     } finally {
       setLoading(false);
@@ -36,6 +37,7 @@ export default function BluetoothManager() {
         setConnectedDevice(device);
       }
     } catch (e) {
+        console.log(e);
       setError('Connection failed');
     } finally {
       setLoading(false);
