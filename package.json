@@ -13,6 +13,7 @@
   "dependencies": {
     "expo": "^57.0.9",
     "expo-av": "^16.0.8",
+    "expo-dev-client": "^57.0.10",
     "react": "19.2.3",
     "react-native": "0.86.2",
     "react-native-ble-plx": "^3.5.1",
