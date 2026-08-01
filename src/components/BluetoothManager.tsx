@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {View,Text,FlatList,TouchableOpacity,ActivityIndicator} from 'react-native';
 import RNBluetoothClassic, {BluetoothDevice} from 'react-native-bluetooth-classic';
 import styles from './BluetoothManager.styles';
+
 export default function BluetoothManager() {
   const [devices, setDevices] = useState<BluetoothDevice[]>([]);
   const [connectedDevice, setConnectedDevice] =
