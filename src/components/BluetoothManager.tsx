@@ -81,7 +81,7 @@ export default function BluetoothManager() {
         <Text style={styles.buttonText}>Refresh</Text>
       </TouchableOpacity>
       {loading && <ActivityIndicator size="large" />}
-      {error !== '' && <Text style={styles.error}>{error}</Text>}
+      {error !== '' && <Text style={styles.error}>{error}</Text>}a
       <FlatList
         data={devices}
         keyExtractor={item => item.address}

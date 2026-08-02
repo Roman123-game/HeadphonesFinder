@@ -2,6 +2,13 @@
   "name": "main",
   "displayName": "main",
   "android": {
-    "package": "com.anonymous.main"
+    "package": "com.anonymous.main",
+    "permissions": [
+      "BLUETOOTH",
+      "BLUETOOTH_ADMIN",
+      "BLUETOOTH_SCAN",
+      "BLUETOOTH_CONNECT",
+      "ACCESS_FINE_LOCATION"
+    ]
   }
 }
